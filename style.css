@@ -1,0 +1,21 @@
+h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 30px;
+  }
+  #meme-section{
+    margin: auto;
+    width: 60%;
+    padding: 10px;
+    border: 21px inset #1C6EA4;
+    border-radius: 21px;
+  }
+  
+  body {
+    margin: 10px;
+    background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(66,145,238,1) 100%);
+  }
+  
+  #meme-canvas {
+    width: 300px;
+  }
