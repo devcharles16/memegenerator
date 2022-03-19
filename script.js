@@ -1,34 +1,38 @@
+//Create the function with input
 function generateMeme(img, topText, bottomText, topTextSize, bottomTextSize) {
+   //get canvas element then use getcontext to access drawing context
     const canvas = document.getElementById('meme-canvas');
     const ctx = canvas.getContext('2d');
   
-    // Size canvas to image
+    // set canvas to image size
     canvas.width = img.width;
     canvas.height = img.height;
-  
-    // Clear canvas
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // Draw main image
+
+    // draw main image
     ctx.drawImage(img, 0, 0);
   
-    // Text style: white with black borders
-    ctx.fillStyle = 'white';
-    ctx.strokeStyle = 'black';
+    // Set text color and alignment
+    ctx.fillStyle = 'black';
+    ctx.strokeStyle = 'white';
     ctx.textAlign = 'center';
+
+    // erase the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   
-    // Top text font size
+    // set top text font size
     let fontSize = canvas.width * topTextSize;
     ctx.font = `${fontSize}px Impact`;
     ctx.lineWidth = fontSize / 20;
+
   
-    // Draw top text
+    // add top text
     ctx.textBaseline = 'top';
     topText.split('\n').forEach((t, i) => {
       ctx.fillText(t, canvas.width / 2, i * fontSize, canvas.width);
       ctx.strokeText(t, canvas.width / 2, i * fontSize, canvas.width);
     });
   
-    // Bottom text font size
+    // set bottom text font size
     fontSize = canvas.width * bottomTextSize;
     ctx.font = `${fontSize}px Impact`;
     ctx.lineWidth = fontSize / 20;
@@ -42,20 +46,21 @@ function generateMeme(img, topText, bottomText, topTextSize, bottomTextSize) {
   }
   
   window.addEventListener('DOMContentLoaded', () => {
-    // Initialize variables
+    // initialize variables to get text, text size, image and button for function
     const topTextInput = document.getElementById('top-text');
     const bottomTextInput = document.getElementById('bottom-text');
     const topTextSizeInput = document.getElementById('top-text-size-input');
     const bottomTextSizeInput = document.getElementById('bottom-text-size-input');
     const imageInput = document.getElementById('image-input');
     const generateBtn = document.getElementById('generate-btn');
-    // Default/Demo text
-    topTextInput.value = 'Top\nValue';
-    bottomTextInput.value = 'Bottom\nValue';
+
+    // set default meme text
+    topTextInput.value = 'Top Text';
+    bottomTextInput.value = 'Bottom Text';
   
-    // Generate button click listener
+    // add click listener for generate meme button
     generateBtn.addEventListener('click', () => {
-      // Read image as DataURL using the FileReader API
+      // use FileReader API to read image
       const reader = new FileReader();
       reader.onload = () => {
         const img = new Image();
